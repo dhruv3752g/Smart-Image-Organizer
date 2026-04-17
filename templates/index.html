@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Image Classifier</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            background: linear-gradient(135deg, #46a6ff, #ff00aa);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 380px;
+            padding: 30px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.2);
+            text-align: center;
+        }
+
+        h2 {
+            color: white;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .file-input {
+            margin: 20px 0;
+        }
+
+        input[type="file"] {
+            padding: 10px;
+            width: 100%;
+            border-radius: 10px;
+            border: none;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            cursor: pointer;
+        }
+
+        input[type="file"]::file-selector-button {
+            background: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        button {
+            margin-top: 15px;
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 12px;
+            background: white;
+            color: #333;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        button:hover {
+            background: #000;
+            color: white;
+        }
+
+        .result {
+            margin-top: 25px;
+        }
+
+        .result h3 {
+            color: white;
+            font-weight: 400;
+        }
+
+        img {
+            margin-top: 15px;
+            width: 100%;
+            border-radius: 15px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Smart Classifier</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+        <div class="file-input">
+            <input type="file" name="image" required>
+        </div>
+        <button type="submit">Predict Image</button>
+    </form>
+
+    {% if label %}
+        <div class="result">
+            <h3>Prediction: {{ label }}</h3>
+            <img src="{{ image_path }}">
+        </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
